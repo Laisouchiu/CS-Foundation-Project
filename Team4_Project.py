@@ -14,20 +14,34 @@
 
 
 #%%
-######### Write your code below ###########
+######### Step 1: Creating a display function ###########
 
-def display(board):
-    for row in board:
+def display(matrix):
+    # Find and set the space length of the max number in the board as the default length for every unit:
+    max = matrix[0][0]
+    for row in matrix: 
+        for i in row: 
+            if i >max:
+                max = i
+    spaces = len(str(max))
+    
+    # Print out the board into a gameboard format
+    for row in matrix:
         newRow = "|"
         for num in row: 
             if num == 0:
-                newRow += " |"
+                newRow += " " * spaces + "|"
             else:
-                newRow += str(num) + "|"
+                newRow += (" " * (spaces - len(str(num)))) + str(num) + "|"
+    
+    # Print out the modified matrix
         print(newRow)
     print()
 
-test = [[0,0,0,0], [1,2,3,4]]
+test = [[0,0,0,0], [1,2000,3,4], [7,8,10000,34], [0,4,399,70]]
 display(test)
+
+
         
 # %%
+######### Step 2: Creating a merging function ###########
