@@ -49,7 +49,7 @@ display(test_board)
 ## Function to merge only one row left: 
 def one_left(row):
     
-    # Moving every non-zero tiles to left
+    # Moving every non-zero tiles to left first
     for i in range(board_size-1):
         for j in range(board_size-1, 0 ,-1):
             if row[j-1] == 0:
