@@ -44,22 +44,25 @@ display(test_board)
         
 # %%
 ######### Step 2: Creating a merging functions ###########
-# Tips: Merging will occur only when the adjacent number of the merging direction is identical
+# (Tips: Merging will occur only when the adjacent number of the merging direction is identical)
 
-# Function to merge only one row left: 
+## Function to merge only one row left: 
 def one_left(row):
     
+    # Moving every non-zero tiles to left
     for i in range(board_size-1):
         for j in range(board_size-1, 0 ,-1):
             if row[j-1] == 0:
                 row[j-1] = row[j]
                 row[j] = 0
     
+    # Merging adjacent equal tiles
     for i in range(board_size-1):
         if row[i] == row[i+1]:
             row[i] *= 2
             row[i+1] = 0
     
+    # Moving non-zero tiles to the left again
     for i in range(board_size-1, 0, -1):
         if row[i-1] == 0:
             row[i-1] = row[i]
@@ -68,13 +71,12 @@ def one_left(row):
     # Finally return the left-merged row
     return row
 
-test_row1 = [1, 2000, 3, 4]
-test_row2 = [2, 2, 0, 4]
-
-result1 = one_left(test_row1)
-result2 = one_left(test_row2)
-print(result1)
-print(result2)
+# test_row1 = [1, 2000, 3, 4]
+# test_row2 = [2, 2, 0, 4]
+# result1 = one_left(test_row1)
+# result2 = one_left(test_row2)
+# print(result1)
+# print(result2)
 
 
 # Function to merge the whole board matrix left
