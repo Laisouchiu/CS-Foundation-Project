@@ -45,22 +45,19 @@ display(test_board)
 
 
 # %%
-######### Step 2: Writing one Merging functions ###########
+######### Step 2: Writing Merging functions ###########
 # (Tips: Merging will occur only when the adjacent number of the merging direction is identical)
 
 # Define a reverse function first so that we don't need to define every direction merge later: 
-def reverse(row): 
-    new_row = []
-    for i in range (board_size-1, -1, -1):
-        new_row.append(row[i])
-    return new_row
+def reverse(row):
+    return row[::-1]
 
 
-## Function to merge only one row left: 
+# Function to merge only one row left
 def one_left(row):
     # Moving every non-zero tiles to left first
     for i in range(board_size-1):
-        for j in range(board_size-1, 0 ,-1):
+        for j in range(board_size-1, 0, -1):
             if row[j-1] == 0:
                 row[j-1] = row[j]
                 row[j] = 0
@@ -84,18 +81,18 @@ def left(matrix_board):
         matrix_board[i] = one_left(matrix_board[i])
     return matrix_board
 
-display(left(test_board))
-print('')
-
-
-# Use reverse function to create another function that can merge the whole board matrix right:
+# Function to merge the whole board matrix right
 def right(matrix_board):
     for i in range(board_size):
         matrix_board[i] = reverse(matrix_board[i])
-        matrix_board[i] = left(matrix_board[i])
+        matrix_board[i] = one_left(matrix_board[i])
         matrix_board[i] = reverse(matrix_board[i])
     return matrix_board
 
+
+# Test case 
+display(left(test_board))
+print('')
 display(right(test_board))
 
 
