@@ -55,10 +55,9 @@ def reverse(row):
     return row[::-1]
 
 # Define a transpose function first so that we can easily define up and down merge later: 
-def list_transpose(matrix):
-    transposed_matrix = np.array(matrix).T.tolist()
+def list_transpose(matrix_board):
+    transposed_matrix = np.array(matrix_board).T.tolist()
     return transposed_matrix
-
 
 # Function to merge only one row left
 def one_left(row):
@@ -96,7 +95,6 @@ def right(matrix_board):
         matrix_board[i] = reverse(matrix_board[i])
     return matrix_board
 
-
 # Function to merge the whole board matrix up
 def up(matrix_board):
     matrix_board = list_transpose(matrix_board)
@@ -112,14 +110,11 @@ def down(matrix_board):
     return matrix_board 
 
 
-# Test cases 
-display(left(test_board))
-print('')
-display(right(test_board))
+# Test case: 
+display(test_board)
 print('')
 display(up(test_board))
-print('')
-display(down(test_board))
+
 
 
 
