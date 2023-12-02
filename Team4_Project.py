@@ -11,6 +11,8 @@
 # 5. Set up adding a new value each time after player make a move.
 # 6. Set up functions to test if the player has won or lost. 
 
+import numpy as np
+import pandas as pd 
 board_size = 4 # Because the game board is 4x4 grid
 
 
@@ -48,15 +50,20 @@ display(test_board)
 ######### Step 2: Writing Merging functions ###########
 # (Tips: Merging will occur only when the adjacent number of the merging direction is identical)
 
-# Define a reverse function first so that we don't need to define every direction merge later: 
+# Define a reverse function first so that we don't need to left and right merge individually: 
 def reverse(row):
     return row[::-1]
+
+# Define a transpose function first so that we can easily define up and down merge later: 
+def list_transpose(matrix):
+    transposed_matrix = np.array(matrix).T.tolist()
+    return transposed_matrix
 
 
 # Function to merge only one row left
 def one_left(row):
     # Moving every non-zero tiles to left first
-    for i in range(board_size-1):
+    for _ in range(board_size-1):
         for j in range(board_size-1, 0, -1):
             if row[j-1] == 0:
                 row[j-1] = row[j]
@@ -90,12 +97,32 @@ def right(matrix_board):
     return matrix_board
 
 
-# Test case 
+# Function to merge the whole board matrix up
+def up(matrix_board):
+    matrix_board = list_transpose(matrix_board)
+    matrix_board = left(matrix_board)
+    matrix_board = list_transpose(matrix_board)
+    return matrix_board 
+
+# Function to merge the whole board matrix down
+def down(matrix_board):
+    matrix_board = list_transpose(matrix_board)
+    matrix_board = right(matrix_board)
+    matrix_board = list_transpose(matrix_board)
+    return matrix_board 
+
+
+# Test cases 
 display(left(test_board))
 print('')
 display(right(test_board))
+print('')
+display(up(test_board))
+print('')
+display(down(test_board))
 
 
 
 # %%
-######### Step 3: Writing a Reverse and Transpose function based on the Merging function ###########
+######### Step 3:  ###########
+
