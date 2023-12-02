@@ -1,19 +1,19 @@
 #%%
 ### DATS-6450 Project Team file
 
-
-#%%
 ######### Steps ###########
 # 1. Set up the board using a list of lists. 
 # 2. Create functions that will merge left, right, up, and down. We will create functions to reverse and transpose the list of lists to do this
-# 3. Set up the start of the game, by creating an empty gameboard with 2 random unit (value in either 2 and 4)
+# 3. Set up the start of the game
 # 4. Set up the rounds of the game, where the users will have the option to merge in any one of the 4 directions, and after they move, a new board will display. 
 # 5. Set up adding a new value each time after player make a move.
 # 6. Set up functions to test if the player has won or lost. 
 
 import numpy as np
 import pandas as pd 
-board_size = 4 # Because the game board is 4x4 grid
+import random
+
+board_size = 4 # Because the gameboard is a 4x4 grid
 
 
 #%%
@@ -58,6 +58,7 @@ def reverse(row):
 def list_transpose(matrix_board):
     transposed_matrix = np.array(matrix_board).T.tolist()
     return transposed_matrix
+
 
 # Function to merge only one row left
 def one_left(row):
@@ -109,15 +110,49 @@ def down(matrix_board):
     matrix_board = list_transpose(matrix_board)
     return matrix_board 
 
-
 # Test case: 
 display(test_board)
 print('')
-display(up(test_board))
+display(up(test_board)) # Try either left, or right, or up, or down
 
 
 
 
 # %%
-######### Step 3:  ###########
+######### Step 3: Set up the start board of the game ###########
+## By creating an empty 4x4 gameboard with 2 random unit (value in either 2 and 4)
 
+# Create an empty board
+start_board = []
+
+# Initially fill lists with zeros and add these lists to the main board list
+for _ in range(board_size):
+    row = []
+    for i in range(board_size):
+        row.append(0)
+    start_board.append(row)
+
+# Pick a new value (2 or 4) for a randomp tile in the board at start
+def two_four_rand():
+    if random.randint(1,8) == 1:
+        return 4
+    else: 
+        return 2
+    
+# Randomly fill two tiles spots in the board with random values to start the game
+start_tiles = 2
+while start_tiles>0:
+    rand_row_index = random.randint(0, board_size-1)
+    rand_col_index = random.randint(0, board_size-1)
+    if start_board[rand_row_index][rand_col_index] == 0:
+        start_board[rand_row_index][rand_col_index] == two_four_rand()
+        start_tiles -= 1
+
+# Officially starting the game
+print("Welcome to 2048 Game! You lose, Goodbye!")
+print('')
+display(start_board)
+
+
+
+# %%
