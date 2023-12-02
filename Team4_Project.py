@@ -11,7 +11,8 @@
 # 5. Set up adding a new value each time after player make a move.
 # 6. Set up functions to test if the player has won or lost. 
 
-board_size = 4
+board_size = 4 # Because the game board is 4x4 grid
+
 
 #%%
 ######### Step 1: Creating a display function ###########
@@ -41,54 +42,63 @@ def display(matrix_board):
 test_board = [[0,0,2,2], [2,2,2,0], [4,0,0,4], [0,2,0,0]]
 display(test_board)
 
-        
+
+
 # %%
-######### Step 2: Creating a merging functions ###########
+######### Step 2: Writing one Merging functions ###########
 # (Tips: Merging will occur only when the adjacent number of the merging direction is identical)
+
+# Define a reverse function first so that we don't need to define every direction merge later: 
+def reverse(row): 
+    new_row = []
+    for i in range (board_size-1, -1, -1):
+        new_row.append(row[i])
+    return new_row
+
 
 ## Function to merge only one row left: 
 def one_left(row):
-    
     # Moving every non-zero tiles to left first
     for i in range(board_size-1):
         for j in range(board_size-1, 0 ,-1):
             if row[j-1] == 0:
                 row[j-1] = row[j]
                 row[j] = 0
-    
     # Merging adjacent equal tiles
     for i in range(board_size-1):
         if row[i] == row[i+1]:
             row[i] *= 2
             row[i+1] = 0
-    
     # Moving non-zero tiles to the left again
     for i in range(board_size-1, 0, -1):
         if row[i-1] == 0:
             row[i-1] = row[i]
             row[i] = 0
-    
     # Finally return the left-merged row
     return row
-
-# test_row1 = [1, 2000, 3, 4]
-# test_row2 = [2, 2, 0, 4]
-# result1 = one_left(test_row1)
-# result2 = one_left(test_row2)
-# print(result1)
-# print(result2)
 
 
 # Function to merge the whole board matrix left
 def left(matrix_board):
     for i in range(board_size): 
         matrix_board[i] = one_left(matrix_board[i])
-    
     return matrix_board
 
-
 display(left(test_board))
+print('')
+
+
+# Use reverse function to create another function that can merge the whole board matrix right:
+def right(matrix_board):
+    for i in range(board_size):
+        matrix_board[i] = reverse(matrix_board[i])
+        matrix_board[i] = left(matrix_board[i])
+        matrix_board[i] = reverse(matrix_board[i])
+    return matrix_board
+
+display(right(test_board))
 
 
 
 # %%
+######### Step 3: Writing a Reverse and Transpose function based on the Merging function ###########
