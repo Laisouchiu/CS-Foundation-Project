@@ -10,11 +10,9 @@
 # 6. Set up functions to test if the player has won or lost. 
 
 import numpy as np
-import pandas as pd 
 import random
 
 board_size = 4 # Because the gameboard is a 4x4 grid
-
 
 #%%
 ######### Step 1: Creating a display function ###########
@@ -175,6 +173,57 @@ display(start_board)
 
 gameover = False # set as false at initially, because we just started the game
 
+# Set up functions to test if the player has won or lost
+def check_win_condition(matrix_board):
+    # Check for win condition
+    for row in matrix_board:
+        if 2048 in row:
+            return True
+    return False
+
+def check_loss_condition(matrix_board):
+    # Check for loss condition
+    for row in matrix_board:
+        if 0 in row:
+            return False
+        for i in range(board_size - 1):
+            if row[i] == row[i + 1]:
+                return False
+    return True
+
 # Use while-loop to keep asking the users for new moves as long as the game doesn't over
 while not gameover:
-    direction = input("What's your move?")
+    direction = input("What's your move? (left, right, up, down)")
+
+    if direction.lower() in ['left', 'right', 'up', 'down']:
+        if direction.lower() == 'left':
+            start_board = left(start_board)
+        elif direction.lower() == 'right':
+            start_board = right(start_board)
+        elif direction.lower() == 'up':
+            start_board = up(start_board)
+        elif direction.lower() == 'down':
+            start_board = down(start_board)
+
+        rand_row_index = random.randint(0, board_size - 1)
+        rand_col_index = random.randint(0, board_size - 1)
+
+        while start_board[rand_row_index][rand_col_index] != 0:
+            rand_row_index = random.randint(0, board_size - 1)
+            rand_col_index = random.randint(0, board_size - 1)
+
+        start_board[rand_row_index][rand_col_index] = two_four_rand()
+
+        display(start_board)
+
+        # Check for win or lose conditions
+        if check_win_condition(start_board):
+            print("Congratulations! You won!")
+            gameover = True
+        if check_loss_condition(start_board):
+            print("Game over! You lost.")
+            gameover = True
+            break
+    else:
+        print("Invalid move. Please enter 'left', 'right', 'up', or 'down'.")
+
