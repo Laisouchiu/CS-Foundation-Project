@@ -237,4 +237,6 @@ while not gameover:
     else:
         print("Invalid move. Please enter 'left', 'right', 'up', or 'down'.")
 
+
+
 #%%
