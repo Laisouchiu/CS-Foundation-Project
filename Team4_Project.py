@@ -234,8 +234,10 @@ while not gameover:
             print("Game over! You lost.")
             gameover = True
             break
+    # else:
+    #     print("Invalid move. Please enter 'left', 'right', 'up', or 'down'.")
     else:
-        print("Invalid move. Please enter 'left', 'right', 'up', or 'down'.")
+        print("Invalid move. Please enter 'w' for moving up, 'a' for moving left, 's' for moving down, or 'd' for moving right.")
 
 
 
