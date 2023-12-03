@@ -120,7 +120,7 @@ display(up(test_board)) # Try either left, or right, or up, or down
 
 # %%
 ######### Step 3: Set up the start board of the game ###########
-## By creating an empty 4x4 gameboard with 2 random unit (value in either 2 and 4)
+## By creating an empty 4x4 gameboard with 2 random tiles valued in either 2 and 4 each
 
 # Create an empty board
 start_board = []
@@ -145,7 +145,7 @@ while start_tiles>0:
     rand_row_index = random.randint(0, board_size-1)
     rand_col_index = random.randint(0, board_size-1)
     if start_board[rand_row_index][rand_col_index] == 0:
-        start_board[rand_row_index][rand_col_index] == two_four_rand()
+        start_board[rand_row_index][rand_col_index] = two_four_rand()
         start_tiles -= 1
 
 # Officially starting the game
