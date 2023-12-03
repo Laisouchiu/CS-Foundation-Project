@@ -11,6 +11,8 @@
 # 10. Main game loop
 # 11. Quit Pygame
 
+
+# pip install pygame
 import pygame
 import random
 
