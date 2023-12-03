@@ -132,10 +132,12 @@ for _ in range(board_size):
         row.append(0)
     start_board.append(row)
 
-# Pick a new value (2 or 4) for a randomp tile in the board at start
+# Randomly generate a value (either 2 or 4) for a new tile at the begining
+# The default probability for the 2048 game is typically such that the value 2 has a higher probability than the value 4.
 def two_four_rand():
-    if random.randint(1,8) == 1:
+    if random.randint(1,6) == 4: 
         return 4
+    # 1/6 probability to generate a 4, which can change; but remember need to lower than the probability of 2
     else: 
         return 2
     
