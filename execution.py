@@ -44,7 +44,7 @@ gameover = False # set as false at initially, because we just started the game
 # Use while-loop to keep asking the users for new moves as long as the game doesn't over
 while not gameover:
     
-    direction = input("What's your move? (left, right, up, down)")
+    direction = input("What's your move? ('w' for Up, 'a' for Left, 's' for Down, 'd' for Right)")
 
 
     if direction.lower() in ['a', 'd', 'w', 's']:
@@ -88,7 +88,7 @@ while not gameover:
         break
 
     else:
-        print("Invalid move. Please enter 'w' for moving up, 'a' for moving left, 's' for moving down, or 'd' for moving right.")
+        print("Invalid move. Please enter 'w' Up, 'a' for moving Left, 's' for Down, or 'd' for Right.")
     
 
 # %%
