@@ -1,6 +1,3 @@
-### DATS-6450 Project Team file
-
-
 ######### Steps ###########
 # 1. Initialize Pygame
 # 2. Set up the game window
@@ -14,6 +11,8 @@
 # 10. Main game loop
 # 11. Quit Pygame
 
+
+# pip install pygame
 import pygame
 import random
 
@@ -55,7 +54,7 @@ init_count = 0
 direction = ''
 score = 0
 
-file = open('high_score.txt', 'r')
+file = open('Reference_High_Score.txt', 'r')
 init_high = int(file.readline())
 file.close()
 high_score = init_high
