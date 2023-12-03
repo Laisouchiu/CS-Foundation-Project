@@ -195,14 +195,24 @@ def check_loss_condition(matrix_board):
 while not gameover:
     direction = input("What's your move? (left, right, up, down)")
 
-    if direction.lower() in ['left', 'right', 'up', 'down']:
-        if direction.lower() == 'left':
+    # if direction.lower() in ['left', 'right', 'up', 'down']:
+    #     if direction.lower() == 'left':
+    #         start_board = left(start_board)
+    #     elif direction.lower() == 'right':
+    #         start_board = right(start_board)
+    #     elif direction.lower() == 'up':
+    #         start_board = up(start_board)
+    #     elif direction.lower() == 'down':
+    #         start_board = down(start_board)
+    
+    if direction.lower() in ['a', 'd', 'w', 's']:
+        if direction.lower() == 'a':
             start_board = left(start_board)
-        elif direction.lower() == 'right':
+        elif direction.lower() == 'd':
             start_board = right(start_board)
-        elif direction.lower() == 'up':
+        elif direction.lower() == 'w':
             start_board = up(start_board)
-        elif direction.lower() == 'down':
+        elif direction.lower() == 's':
             start_board = down(start_board)
 
         rand_row_index = random.randint(0, board_size - 1)
@@ -227,3 +237,4 @@ while not gameover:
     else:
         print("Invalid move. Please enter 'left', 'right', 'up', or 'down'.")
 
+#%%
