@@ -41,6 +41,7 @@ def display(matrix_board):
         print(newRow)
     print()
 
+# Test case
 test_board = [[0,0,2,2], [2,2,2,0], [4,0,0,4], [0,2,0,0]]
 display(test_board)
 
@@ -150,11 +151,30 @@ while start_tiles>0:
         start_board[rand_row_index][rand_col_index] = two_four_rand()
         start_tiles -= 1
 
+# In the standard rules of the 2048 game, 
+# a new tile appears after each successful move, 
+# and the value of the new tile is typically set to 2. 
+# The position of the new tile is random,
+# and it can appear in any empty space on the board.
+
+# Test case:
+display(start_board)
+
+
+# %%
+######### Step 4-6: Set up the mechanism of the game ###########
+
+# Mechanism for adding a new number
+# A new tile appears after each successful move, and the value of the new tile is typically set to 2. 
+# The position of the new tile is random, and it can appear in any empty space on the board.
+
 # Officially starting the game
 print("Welcome to 2048 Game! You lose, Goodbye!")
 print('')
 display(start_board)
 
+gameover = False # set as false at initially, because we just started the game
 
-
-# %%
+# Use while-loop to keep asking the users for new moves as long as the game doesn't over
+while not gameover:
+    direction = input("What's your move?")
