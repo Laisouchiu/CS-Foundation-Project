@@ -6,7 +6,7 @@ There are some files you may concern in this repo:
 **Execution.py**: Players can initiate 2048 game from this file.  
 **Team4_project.py**: This file contains almost all of the codes regarding of the 2048 game. We started coding from this file.   
 **Team4_Project_save.py**: We added more functions to this project, like how to store state of games, how to resume it.  
-**Reference_2048_Game.py**: This developed using the pygame package, is a UI-designed file for the 2048 game, incorporating arrow key navigation. We consider this file as a reference for creating the final project.
+**Reference_2048_Game.py**: This file is created using the pygame package to develop the 2048 game. It includes the design of the user interface and utilizes the arrow keys on the keyboard for navigation. We consider this file as a reference project for creating the final project.
 
 ## What's 2048 game? 
 The 2048 game is a puzzle game where the goal is to combine numbered tiles to reach the tile with the number 2048. The **standard rules** for the 2048 game are as follows:
