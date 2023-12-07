@@ -24,6 +24,7 @@ The 2048 game is a puzzle game where the goal is to combine numbered tiles to re
 - Start Board Setup
 - Game Mechanisms Setup  
   - Win/Loss Conditions
+- Game resume module
 - Game Loop
 
 ## How to play? 
